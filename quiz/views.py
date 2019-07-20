@@ -23,7 +23,7 @@ def question_detail(request, question_id):
             form = BooleanQuestionForm(request.POST)
             instance = form.save(commit=False)
             instance.user = request.user
-            instance.question_id = question_id
+            instance.question = question
             instance.save()
         else:
             form = BooleanQuestionForm()
@@ -49,7 +49,7 @@ def question_detail(request, question_id):
             form = TheoryQuestionForm(request.POST)
             instance = form.save(commit=False)
             instance.user = request.user
-            instance.question_id = question_id
+            instance.question = question
             instance.save()
         else:
             form = TheoryQuestionForm()

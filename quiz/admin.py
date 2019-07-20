@@ -1,7 +1,8 @@
 from django.contrib import admin
 from .models import (
     BooleanQuestion, BooleanQuestionAnswer,
-    MultipleChoiceQuestion, MultipleChoiceQuestionOption
+    MultipleChoiceQuestion, MultipleChoiceQuestionOption,
+    TheoryQuestion
 )
 
 # Register your models here.
@@ -13,7 +14,8 @@ MODELS = [
     {'model': BooleanQuestion, 'admin': BooleanQuestionAdmin},
     {'model': BooleanQuestionAnswer, 'admin': BooleanQuestionAdmin},
     {'model': MultipleChoiceQuestion},
-    {'model': MultipleChoiceQuestionOption}
+    {'model': MultipleChoiceQuestionOption},
+    {'model': TheoryQuestion},
 ]
 
 for model in MODELS:
