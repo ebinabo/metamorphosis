@@ -16,6 +16,8 @@ def question_detail(request, question_id):
     multiple_choice = MultipleChoiceQuestion.objects.all()
     theory = TheoryQuestion.objects.all()
 
+    next_question = redirect(question_detail, question_id = question_id+1)
+
     if boolean.filter(question_number = question_id).exists():
         question = boolean.get(question_number=question_id)
 
@@ -25,6 +27,8 @@ def question_detail(request, question_id):
             instance.user = request.user
             instance.question = question
             instance.save()
+
+            return next_question
         else:
             form = BooleanQuestionForm()
 
@@ -38,6 +42,8 @@ def question_detail(request, question_id):
             instance.user = request.user
             instance.question_id = question_id
             instance.save()
+
+            return next_question
         else:
             form = MultipleChoiceQuestionForm(question.question_number)
 
@@ -51,6 +57,8 @@ def question_detail(request, question_id):
             instance.user = request.user
             instance.question = question
             instance.save()
+
+            return next_question
         else:
             form = TheoryQuestionForm()
 
